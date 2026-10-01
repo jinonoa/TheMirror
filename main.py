@@ -45,3 +45,13 @@ def reperage(chemin):
                 nouvelle_image = Image.new(image_recadree.mode, image_recadree.size)
                 nouvelle_image.paste(image_recadree)
                 nouvelle_image.save("/home/eduleboss/Documents/TheMirror/resultat/photo_01.jpg")
+
+catalogue = os.listdir("/home/eduleboss/Documents/TheMirror/Catalogue/")
+chemin_catalogue = "/home/eduleboss/Documents/TheMirror/Catalogue/"
+Liste = []
+for element in catalogue:
+    entree = dict(nom = element, chemin = os.path.join(chemin_catalogue, element))
+    Liste.append(entree)
+
+with open("/home/eduleboss/Documents/TheMirror/catalogue.json", "w") as fichier:
+    json.dump(liste, fichier)
