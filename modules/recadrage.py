@@ -1,11 +1,8 @@
-import PIL
-
 def recadrer(image, coordonnees):
-    x, y, largeur, hauteur = coordonnees
-    x = coordonnees[0]
-    y = coordonnees[1]
-    largeur = coordonnees[2]
-    hauteur = coordonnees[3]
+    x = coordonnees.x
+    y = coordonnees.y
+    largeur = coordonnees.largeur
+    hauteur = coordonnees.hauteur
     left = x
     top = y
     right = x + largeur

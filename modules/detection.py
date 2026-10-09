@@ -1,5 +1,6 @@
 import numpy as np
 import mediapipe as mp
+from modules.models import DetectionResult
 
 def detecter_visage(image):
     image_mp = mp.Image(image_format = mp.ImageFormat.SRGB, data = np.array(image))
@@ -13,6 +14,6 @@ def detecter_visage(image):
             y = visage.bounding_box.origin_y
             largeur = visage.bounding_box.width
             hauteur = visage.bounding_box.height
-            return x, y, largeur, hauteur
+            return DetectionResult(x, y, largeur, hauteur)
         else:
             return None
