@@ -2,7 +2,7 @@ import os
 import json
 from modules.models import Coiffure
 from dataclasses import asdict 
-def generer_catalogue(dossier_catalogue, chemin_json):
+def generer_catalogue(dossier_catalogue: str, chemin_json: str) -> None:
     catalogue = os.listdir(dossier_catalogue)
     liste = []
     extension_autorisee = ['.jpeg', '.png']

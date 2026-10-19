@@ -1,4 +1,7 @@
-def recadrer(image, coordonnees):
+from PIL import Image
+from modules.models import DetectionResult
+
+def recadrer(image: Image.Image, coordonnees: DetectionResult) -> Image.Image:
     (largeur_image, hauteur_image) = image.size
     x = coordonnees.x
     y = coordonnees.y

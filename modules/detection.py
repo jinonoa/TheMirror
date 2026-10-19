@@ -1,8 +1,9 @@
 import numpy as np
 import mediapipe as mp
+from PIL import Image
 from modules.models import DetectionResult
 
-def detecter_visage(image):
+def detecter_visage(image: Image.Image) -> DetectionResult | None:
     image_mp = mp.Image(image_format = mp.ImageFormat.SRGB, data = np.array(image))
     model_path = 'model/blaze_face_short_range.tflite'
     faceDetector = mp.tasks.vision.FaceDetector 
