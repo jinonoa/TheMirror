@@ -1,5 +1,7 @@
 import json
+
 import pytest
+
 from modules.catalogue import generer_catalogue
 
 
@@ -16,6 +18,7 @@ def test_fichier_json_cree(tmp_path):
 
     assert chemin_json.is_file()
 
+
 def test_contenu_catalogue_correct(tmp_path):
     dossier_catalogue = tmp_path / "catalogue"
     dossier_catalogue.mkdir()
@@ -27,12 +30,13 @@ def test_contenu_catalogue_correct(tmp_path):
 
     generer_catalogue(dossier_catalogue, chemin_json)
 
-    with open(chemin_json, "r", encoding="utf-8") as fichier:
+    with open(chemin_json, encoding="utf-8") as fichier:
         catalogue = json.load(fichier)
 
     assert len(catalogue) == 1
     assert catalogue[0]["nom"] == "coiffure_1"
     assert catalogue[0]["chemin"] == str(image)
+
 
 def test_fichiers_non_autorises_ignores(tmp_path):
     dossier_catalogue = tmp_path / "catalogue"
@@ -46,7 +50,7 @@ def test_fichiers_non_autorises_ignores(tmp_path):
 
     generer_catalogue(dossier_catalogue, chemin_json)
 
-    with open(chemin_json, "r", encoding="utf-8") as fichier:
+    with open(chemin_json, encoding="utf-8") as fichier:
         catalogue = json.load(fichier)
 
     assert len(catalogue) == 2
@@ -66,7 +70,7 @@ def test_fichiers_non_autorises_ignores(tmp_path):
 
         generer_catalogue(dossier_catalogue, chemin_json)
 
-        with open(chemin_json, "r", encoding="utf-8") as fichier:
+        with open(chemin_json, encoding="utf-8") as fichier:
             catalogue = json.load(fichier)
 
         assert len(catalogue) == 1
@@ -80,7 +84,7 @@ def test_fichiers_non_autorises_ignores(tmp_path):
 
         generer_catalogue(dossier_catalogue, chemin_json)
 
-        with open(chemin_json, "r", encoding="utf-8") as fichier:
+        with open(chemin_json, encoding="utf-8") as fichier:
             catalogue = json.load(fichier)
 
         assert catalogue == []

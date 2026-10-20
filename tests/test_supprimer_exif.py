@@ -1,19 +1,23 @@
 from PIL import Image
+
 from modules.exif import supprimer_exif
+
 
 def test_fichier_enregistre(tmp_path):
     image = Image.new("RGB", (200, 200), "brown")
-    chemin_fichier_enregistre = tmp_path/"image_enregistre.png"
-    image_enregistree = supprimer_exif(image, chemin_fichier_enregistre)
+    chemin_fichier_enregistre = tmp_path / "image_enregistre.png"
+    supprimer_exif(image, chemin_fichier_enregistre)
     assert chemin_fichier_enregistre.is_file()
+
 
 def test_dimension_fichier_enregistre(tmp_path):
     image = Image.new("RGB", (200, 150), "brown")
-    chemin_dimension_fichier = tmp_path/"image_test.jpg"
+    chemin_dimension_fichier = tmp_path / "image_test.jpg"
 
-    image_enregistree = supprimer_exif(image, chemin_dimension_fichier)
+    supprimer_exif(image, chemin_dimension_fichier)
     with Image.open(chemin_dimension_fichier) as image_fichier:
         assert image_fichier.size == (200, 150)
+
 
 def test_supprimer_exif(tmp_path):
     image = Image.new("RGB", (200, 150), "black")
